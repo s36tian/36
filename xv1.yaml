@@ -1,0 +1,925 @@
+mode: rule
+redir-port: 7892
+port: 7890
+socks-port: 7891
+mixed-port: 7893
+log-level: silent
+allow-lan: true
+unified-delay: true
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  listen: 0.0.0.0:7874
+  nameserver:
+  - dhcp://"wwan1"
+  - dhcp://"wwan0"
+  - 192.168.9.1
+  - 192.168.8.1
+  - 8.8.8.8
+  - 8.8.4.4
+  default-nameserver:
+  - 192.168.8.1
+  - 8.8.8.8
+  - 8.8.4.4
+  - 192.168.9.1
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+  - "*.lan"
+  - "*.localdomain"
+  - "*.example"
+  - "*.invalid"
+  - "*.localhost"
+  - "*.test"
+  - "*.local"
+  - "*.home.arpa"
+  - time.*.com
+  - time.*.gov
+  - time.*.edu.cn
+  - time.*.apple.com
+  - time1.*.com
+  - time2.*.com
+  - time3.*.com
+  - time4.*.com
+  - time5.*.com
+  - time6.*.com
+  - time7.*.com
+  - ntp.*.com
+  - ntp1.*.com
+  - ntp2.*.com
+  - ntp3.*.com
+  - ntp4.*.com
+  - ntp5.*.com
+  - ntp6.*.com
+  - ntp7.*.com
+  - "*.time.edu.cn"
+  - "*.ntp.org.cn"
+  - "+.pool.ntp.org"
+  - time1.cloud.tencent.com
+  - music.163.com
+  - "*.music.163.com"
+  - "*.126.net"
+  - musicapi.taihe.com
+  - music.taihe.com
+  - songsearch.kugou.com
+  - trackercdn.kugou.com
+  - "*.kuwo.cn"
+  - api-jooxtt.sanook.com
+  - api.joox.com
+  - joox.com
+  - y.qq.com
+  - "*.y.qq.com"
+  - streamoc.music.tc.qq.com
+  - mobileoc.music.tc.qq.com
+  - isure.stream.qqmusic.qq.com
+  - dl.stream.qqmusic.qq.com
+  - aqqmusic.tc.qq.com
+  - amobile.music.tc.qq.com
+  - "*.xiami.com"
+  - "*.music.migu.cn"
+  - music.migu.cn
+  - "+.msftconnecttest.com"
+  - "+.msftncsi.com"
+  - msftconnecttest.com
+  - msftncsi.com
+  - localhost.ptlogin2.qq.com
+  - localhost.sec.qq.com
+  - "+.srv.nintendo.net"
+  - "+.stun.playstation.net"
+  - xbox.*.microsoft.com
+  - xnotify.xboxlive.com
+  - "+.battlenet.com.cn"
+  - "+.wotgame.cn"
+  - "+.wggames.cn"
+  - "+.wowsgame.cn"
+  - "+.wargaming.net"
+  - proxy.golang.org
+  - stun.*.*
+  - stun.*.*.*
+  - "+.stun.*.*"
+  - "+.stun.*.*.*"
+  - "+.stun.*.*.*.*"
+  - heartbeat.belkin.com
+  - "*.linksys.com"
+  - "*.linksyssmartwifi.com"
+  - "*.router.asus.com"
+  - mesu.apple.com
+  - swscan.apple.com
+  - swquery.apple.com
+  - swdownload.apple.com
+  - swcdn.apple.com
+  - swdist.apple.com
+  - lens.l.google.com
+  - stun.l.google.com
+  - "+.nflxvideo.net"
+  - "*.square-enix.com"
+  - "*.finalfantasyxiv.com"
+  - "*.ffxiv.com"
+  - "*.mcdn.bilivideo.cn"
+  - "+.media.dssott.com"
+fallback-filter:
+  geoip: true
+  geoip-code: ID
+  ipcidr:
+  - 0.0.0.0/8
+  - 10.0.0.0/8
+  - 100.64.0.0/10
+  - 127.0.0.0/8
+  - 169.254.0.0/16
+  - 172.16.0.0/12
+  - 192.0.0.0/24
+  - 192.0.2.0/24
+  - 192.88.99.0/24
+  - 192.168.0.0/16
+  - 198.18.0.0/15
+  - 198.51.100.0/24
+  - 203.0.113.0/24
+  - 224.0.0.0/4
+  - 240.0.0.0/4
+  - 255.255.255.255/32
+  domain:
+  - "+.google.com"
+  - "+.facebook.com"
+  - "+.youtube.com"
+  - "+.githubusercontent.com"
+  - "+.googlevideo.com"
+  nameserver:
+  - 127.0.0.1:5054
+  fallback:
+  - 127.0.0.1:5053
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+  - "*.lan"
+  - "*.localdomain"
+  - "*.example"
+  - "*.invalid"
+  - "*.localhost"
+  - "*.test"
+  - "*.local"
+  - "*.home.arpa"
+  - time.*.com
+  - time.*.gov
+  - time.*.edu.cn
+  - time.*.apple.com
+  - time1.*.com
+  - time2.*.com
+  - time3.*.com
+  - time4.*.com
+  - time5.*.com
+  - time6.*.com
+  - time7.*.com
+  - ntp.*.com
+  - ntp1.*.com
+  - ntp2.*.com
+  - ntp3.*.com
+  - ntp4.*.com
+  - ntp5.*.com
+  - ntp6.*.com
+  - ntp7.*.com
+  - "*.time.edu.cn"
+  - "*.ntp.org.cn"
+  - "+.pool.ntp.org"
+  - time1.cloud.tencent.com
+  - music.163.com
+  - "*.music.163.com"
+  - "*.126.net"
+  - musicapi.taihe.com
+  - music.taihe.com
+  - songsearch.kugou.com
+  - trackercdn.kugou.com
+  - "*.kuwo.cn"
+  - api-jooxtt.sanook.com
+  - api.joox.com
+  - joox.com
+  - y.qq.com
+  - "*.y.qq.com"
+  - streamoc.music.tc.qq.com
+  - mobileoc.music.tc.qq.com
+  - isure.stream.qqmusic.qq.com
+  - dl.stream.qqmusic.qq.com
+  - aqqmusic.tc.qq.com
+  - amobile.music.tc.qq.com
+  - "*.xiami.com"
+  - "*.music.migu.cn"
+  - music.migu.cn
+  - "+.msftconnecttest.com"
+  - "+.msftncsi.com"
+  - msftconnecttest.com
+  - msftncsi.com
+  - localhost.ptlogin2.qq.com
+  - localhost.sec.qq.com
+  - "+.srv.nintendo.net"
+  - "+.stun.playstation.net"
+  - xbox.*.microsoft.com
+  - xnotify.xboxlive.com
+  - "+.battlenet.com.cn"
+  - "+.wotgame.cn"
+  - "+.wggames.cn"
+  - "+.wowsgame.cn"
+  - "+.wargaming.net"
+  - proxy.golang.org
+  - stun.*.*
+  - stun.*.*.*
+  - "+.stun.*.*"
+  - "+.stun.*.*.*"
+  - "+.stun.*.*.*.*"
+  - heartbeat.belkin.com
+  - "*.linksys.com"
+  - "*.linksyssmartwifi.com"
+  - "*.router.asus.com"
+  - mesu.apple.com
+  - swscan.apple.com
+  - swquery.apple.com
+  - swdownload.apple.com
+  - swcdn.apple.com
+  - swdist.apple.com
+  - lens.l.google.com
+  - stun.l.google.com
+  - "+.nflxvideo.net"
+  - "*.square-enix.com"
+  - "*.finalfantasyxiv.com"
+  - "*.ffxiv.com"
+  - "*.mcdn.bilivideo.cn"
+  - "+.media.dssott.com"
+  default-nameserver:
+  - 127.0.0.1:5054
+  - 127.0.0.1:5053
+  proxy-server-nameserver:
+  - "112.215.203.246"
+  - "112.215.203.247"
+  - "112.215.203.248"
+  - "112.215.203.254"
+  - "112.215.198.248"
+  - "112.215.198.254"
+ipv6: false
+profile:
+  store-selected: true
+  store-fakeip: true
+  store-fake-ip: true
+tproxy-port: 7895
+
+pp: &pp  # proxy-providers复用配置
+  type: select
+  proxies: 
+  - ⚕️auto
+  - 🇮🇩ID
+  - 🇸🇬SG
+  - 🏁free trojan
+  - 🏁free vless
+  - Indonesian
+  - Singapore
+  - Japan
+  - United States
+  - Netherlands
+  - Malaysia
+  - Germany
+  - Korean      
+  - Australia      
+  - Canada  
+  - REJECT
+  
+SL: &SL
+  type: select
+  include-all: true
+#  lazy: true
+  interval: 300
+  tolerance: 50
+
+LB: &LB
+  type: load-balance
+  strategy: round-robin  #consistent-hashing # or round-robin  
+  interval: 300
+  tolerance: 50
+#  include-all: true
+#  hidden: true
+
+FB: &FB
+  type: fallback
+  interval: 300
+  tolerance: 50
+#  include-all: true
+#  hidden: true
+
+UT: &UT
+  type: url-test
+  interval: 300
+  tolerance: 50
+  url: 'https://www.gstatic.com/generate_204'
+  lazy: true
+  timeout: 5000
+  max-failed-times: 5
+#  include-all: true
+#  hidden: true
+
+proxy-groups:
+  - name: 🌏Global
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Global.png
+    <<: *pp
+
+  - name: 🇮🇩Indo
+    icon: https://raw.githubusercontent.com/Semporia/Quantumult-X/refs/heads/master/Bubble/Flag-icon/ID.png
+    <<: *pp
+    
+  - name: 💰Belanja
+    icon: https://raw.githubusercontent.com/MilimNavaDemonLord/open_clash/refs/heads/main/icon/clash/Shopee.png
+    <<: *pp
+    
+  - name: 🎭Sosmed
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Facebook.png
+    <<: *pp
+
+  - name: 📞WhatsApp
+    icon: https://raw.githubusercontent.com/Semporia/Quantumult-X/refs/heads/master/Bubble/Social-Logo/WhatsApp.png
+    <<: *pp
+    
+  - name: 💡Telegram
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Telegram.png
+    <<: *pp
+  
+  - name: 📽️Streaming
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    <<: *pp
+ 
+  - name: ☣️TrafficAds
+    <<: *pp
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Advertising.png
+    
+  - name: ⚕️auto
+    <<: *UT
+    include-all: true    
+    filter: (?i)🏳️|🏴  
+    hidden: true 
+        
+  - name: 🇮🇩ID
+    <<: *UT
+    include-all: true    
+    filter: (?i)🏳️
+    hidden: true    
+        
+  - name: 🇸🇬SG
+    <<: *UT
+    include-all: true    
+    filter: (?i)🏴
+    hidden: true
+    
+  - name: 🏁free trojan
+    <<: *UT    
+    use:
+      - ⚡🌠 TROJAN ⚡🌠
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true     
+    
+  - name: 🏁free vless
+    <<: *UT    
+    use:
+      - ⚡🌠 VLESS ⚡🌠
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true         
+    
+  - name: Indonesian
+    <<: *UT    
+    use:
+      - Indonesian
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true       
+    
+  - name: Singapore
+    <<: *UT    
+    use:
+      - Singapore
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true     
+    
+  - name: Japan
+    <<: *UT    
+    use:
+      - Japan
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true       
+    
+  - name: United States
+    <<: *UT    
+    use:
+      - United States
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true       
+    
+  - name: Netherlands
+    <<: *UT    
+    use:
+      - Netherlands
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true       
+    
+  - name: Malaysia
+    <<: *UT    
+    use:
+      - Malaysia
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true      
+     
+  - name: Germany
+    <<: *UT    
+    use:
+      - Germany
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true       
+    
+  - name: Korean
+    <<: *UT    
+    use:
+      - Korean
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true            
+     
+  - name: Australia 
+    <<: *UT    
+    use:
+      - Australia
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true            
+    
+  - name: Canada
+    <<: *UT    
+    use:
+      - Canada
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
+    hidden: true
+    
+proxies:
+  - name: 🏴Nisaa2
+    server: 104.22.5.240
+    port: 443
+    type: vmess
+    uuid: 9c4342d7-4f37-4860-8183-858cc8becf5f
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: melbi.denkaaravpn.my.id
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: melbi.denkaaravpn.my.id
+    udp: true
+  - name: 🏳️vmess_ws_https_vino_VVIP
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: 2cee853e-e213-4b8a-b58a-e9d21439f627
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: quiz.int.vidio.com.ikada.sing-box.id
+    network: ws
+    ws-opts:
+      path: /buy-vmess-ws-pm-telegram-at-synricha
+      headers:
+        Host: quiz.int.vidio.com.ikada.sing-box.id
+    udp: true
+  - name: 🏳️Memedv1
+    server: quiz.int.vidio.com
+    port: 443
+    type: vless
+    uuid: a09705af-e22f-4e97-b5a1-fcee443aed80
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: nusa.denkaaravpn.my.id
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: nusa.denkaaravpn.my.id
+    udp: true    
+  - name: 🏴Fitri0
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: b4d7643f-8bf9-4df2-a975-553115b77ae2
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: quiz.int.vidio.com.dtpz.denkaaravpn.my.id
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: quiz.int.vidio.com.dtpz.denkaaravpn.my.id
+    udp: true
+  - name: 🏳️Septi4n
+    server: quiz.int.vidio.com
+    port: 443
+    type: vless
+    uuid: fe576908-c622-4a8c-b6c6-da6e1ca73191
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: nusa.denkaaravpn.my.id
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: nusa.denkaaravpn.my.id
+    udp: true
+  - name: 🏴dadang1
+    server: 104.22.5.240
+    port: 443
+    type: trojan
+    password: af76c866-2eee-4241-bb63-292dcdd72d9a
+    skip-cert-verify: true
+    sni: vip-do.webkuy.my.id
+    network: ws
+    ws-opts:
+      path: /trojan
+      headers:
+        Host: vip-do.webkuy.my.id
+    udp: true
+  - name: 🏳️Septian1
+    server: quiz.int.vidio.com
+    port: 443
+    type: trojan
+    password: c902cb2b-7a32-42c7-86bf-0610aa909f5f
+    skip-cert-verify: true
+    sni: lt.denkaaravpn.my.id
+    network: ws
+    ws-opts:
+      path: /trojan
+      headers:
+        Host: lt.denkaaravpn.my.id
+    udp: true
+  - name: 🏳️trojan_WS_Septian_VVIP
+    server: quiz.int.vidio.com
+    port: 443
+    type: trojan
+    password: 16e519e14118a094
+    skip-cert-verify: true
+    sni: quiz.int.vidio.com.atp.sing-box.id
+    network: ws
+    ws-opts:
+      path: /buy-trojan-ws-pm-telegram-at-synricha
+      headers:
+        Host: quiz.int.vidio.com.atp.sing-box.id
+    udp: true    
+  - name: 🏳️Vino1
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: c2a96ffa-c1cd-4cfe-813b-fb8e17d64713
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: msa.denkaaravpn.my.id
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: msa.denkaaravpn.my.id
+    udp: true    
+  - name: 🏴Ilham3
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: 1689516a-2852-4404-aab8-ddb3728632ae
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: do-iv.denkaaravpn.my.id
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: do-iv.denkaaravpn.my.id
+    udp: true
+  - name: 🏴Yusnita2
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: 74f2f8e0-c620-4bda-ba62-15e61665e902
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: melbi.denkaaravpn.my.id
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: melbi.denkaaravpn.my.id
+    udp: true
+    
+    
+  - name: 🏴Riky11
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: 8f11b3c5-faad-4243-9a26-296314a44978
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sgdo.rcvpn.net
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🏴Ujang1
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: a42afa5a-d0af-4f0d-a36b-37a3400d4720
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sgdo.rcvpn.net
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🏴David1
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: be998bdf-e949-4678-ae31-00d4eeb36ec1
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sgdo.rcvpn.net
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🏴Izzul1
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: 8e343fb2-822b-4853-a9e5-f7ce4aa5a304
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sgdo.rcvpn.net
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🏴Ilham1Fajri
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: 4876ed03-aa81-474a-9800-cd12442f303a
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sgdo.rcvpn.net
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🏴Agus1
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: 9a7f26ec-7235-41b1-9363-f0dd9e7715ce
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sgdo.rcvpn.net
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🏴Deryy1
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: f9b2adf0-6717-4e18-90f4-d9e98efe5a0a
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sgdo.rcvpn.net
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🏴Ady1fotocopy
+    server: quiz.int.vidio.com
+    port: 443
+    type: vmess
+    uuid: fd3e69d0-db33-4ee9-ae82-545eada6d504
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: sgdo.rcvpn.net
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true    
+
+proxy-providers:
+  ⚡🌠 TROJAN ⚡🌠:
+    type: http
+    url: https://vltr.vpnoir8r.us.kg/yaml/?trojan=quiz.int.vidio.com
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+  ⚡🌠 VLESS ⚡🌠:
+    type: http
+    url: https://vltr.vpnoir8r.us.kg/yaml/?vless=quiz.int.vidio.com
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+
+  Indonesian:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=id&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=id&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  Singapore:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=sg&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=sg&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  Japan:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=jp&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=jp&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  United States:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=us&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=us&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  Netherlands:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=nl&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=nl&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  Malaysia:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=my&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=my&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  Germany:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=de&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=de&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  Korean:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=kr&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=kr&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  Australia:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=au&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=au&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+  Canada:
+    type: http
+    url: https://sub.ghosting.us.kg/vless/?country=ca&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=ca&ws=aio.ghosting.us.kg
+    interval: 18000
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+      
+rule-anchor:
+classical: &classical  # rule-providers
+  type: http
+  behavior: classical
+  format: yaml
+  interval: '600'
+domain: &domain
+  type: http
+  behavior: domain
+  format: yaml
+  interval: '600'
+ip: &ip
+  type: http
+  behavior: ipcidr
+  format: yaml
+  interval: '600'
+
+rule-providers:
+    
+  2-belanja:
+    <<: *classical
+    path: "./rule_provider/2-belanja.yaml"
+    url: "https://raw.githubusercontent.com/s36tian/Rule_clash/Surfboard-VPN/2-belanja.yaml"
+
+  2-indo:
+    <<: *classical
+    path: "./rule_provider/2-indo.yalm"
+    url: "https://raw.githubusercontent.com/s36tian/Rule_clash/Surfboard-VPN/2-indo.yaml"
+    
+  2-sosmed:
+    <<: *classical
+    path: "./rule_provider/2-sosmed.yaml"
+    url: "https://raw.githubusercontent.com/s36tian/Rule_clash/Surfboard-VPN/2-sosmed.yaml"
+    
+  2-streaming:
+    <<: *classical
+    path: "./rule_provider/2-streaming.yaml"
+    url: "https://raw.githubusercontent.com/s36tian/Rule_clash/Surfboard-VPN/2-streaming.yaml"
+        
+  WhatsApp:
+    <<: *classical
+    path: "./rule_provider/WhatsApp.yaml"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Whatsapp/Whatsapp.yaml"
+
+  Telegram:
+    <<: *classical
+    path: "./rule_provider/Telegram.yaml"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml"    
+    
+  d3host:
+    <<: *domain
+    path: "./rule_provider/d3host.yaml"
+    url: "https://raw.githubusercontent.com/s36tian/Rule_clash/Clash/d3host.yaml"
+     
+  oisd_big:
+    <<: *classical
+    path: "./rule_provider/oisd_big.yaml"
+    url: "https://raw.githubusercontent.com/hillz2/openclash_adblock/main/oisd_big.yaml"
+        
+rules:  
+  - RULE-SET,Telegram,💡Telegram    
+  - RULE-SET,oisd_big,☣️TrafficAds
+  - RULE-SET,d3host,☣️TrafficAds
+  - RULE-SET,2-belanja,💰Belanja
+  - RULE-SET,2-indo,🇮🇩Indo
+  - RULE-SET,2-sosmed,🎭Sosmed
+  - RULE-SET,2-streaming,📽️Streaming
+  - RULE-SET,WhatsApp,📞WhatsApp
+  - MATCH,🌏Global
+  
+
