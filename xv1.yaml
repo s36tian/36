@@ -261,12 +261,10 @@ tproxy-port: 7895
 
 pp: &pp  # proxy-providers复用配置
   type: select
-  proxies: 
-  - ⚕️auto
-  - 🇮🇩ID
-  - 🇸🇬SG
-  - 🏁free trojan
-  - 🏁free vless
+  proxies:
+  - 🇮🇩 INDONESIA VIP
+  - 🇸🇬 SINGAPORE VIP
+  - 🇸🇬 SINGAPORE VIP IFLIK 🎯
   - Indonesian
   - Singapore
   - Japan
@@ -290,7 +288,11 @@ LB: &LB
   type: load-balance
   strategy: round-robin  #consistent-hashing # or round-robin  
   interval: 300
-  tolerance: 50
+  timeout: 5000
+  lazy: false
+  hidden: false
+  url: https://www.gstatic.com/generate_204
+  max-failed-times: 3
 #  include-all: true
 #  hidden: true
 
@@ -304,13 +306,11 @@ FB: &FB
 UT: &UT
   type: url-test
   interval: 300
-  tolerance: 50
-  url: 'https://www.gstatic.com/generate_204'
-  lazy: true
   timeout: 5000
-  max-failed-times: 5
-#  include-all: true
-#  hidden: true
+  lazy: false
+  hidden: false
+  url: https://www.gstatic.com/generate_204
+  max-failed-times: 3
 
 proxy-groups:
   - name: 🌏Global
@@ -344,104 +344,90 @@ proxy-groups:
   - name: ☣️TrafficAds
     <<: *pp
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Advertising.png
-    
-  - name: ⚕️auto
-    <<: *UT
-    include-all: true    
-    filter: (?i)🏳️|🏴  
-    hidden: true 
         
-  - name: 🇮🇩ID
-    <<: *UT
+  - name: 🇮🇩 INDONESIA VIP
+    <<: *LB
     include-all: true    
     filter: (?i)🏳️
     hidden: true    
         
-  - name: 🇸🇬SG
+  - name: 🇸🇬 SINGAPORE VIP
     <<: *UT
     include-all: true    
     filter: (?i)🏴
     hidden: true
-    
-  - name: 🏁free trojan
-    <<: *UT    
-    use:
-      - ⚡🌠 TROJAN ⚡🌠
-    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
-    hidden: true     
-    
-  - name: 🏁free vless
-    <<: *UT    
-    use:
-      - ⚡🌠 VLESS ⚡🌠
-    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
-    hidden: true         
-    
+
+  - name: 🇸🇬 SINGAPORE VIP IFLIK 🎯
+    <<: *UT
+    include-all: true    
+    filter: (?i)🎯
+    hidden: true
+        
   - name: Indonesian
-    <<: *UT    
+    <<: *LB  
     use:
       - Indonesian
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true       
     
   - name: Singapore
-    <<: *UT    
+    <<: *LB  
     use:
       - Singapore
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true     
     
   - name: Japan
-    <<: *UT    
+    <<: *LB  
     use:
       - Japan
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true       
     
   - name: United States
-    <<: *UT    
+    <<: *LB  
     use:
       - United States
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true       
     
   - name: Netherlands
-    <<: *UT    
+    <<: *LB  
     use:
       - Netherlands
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true       
     
   - name: Malaysia
-    <<: *UT    
+    <<: *LB  
     use:
       - Malaysia
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true      
      
   - name: Germany
-    <<: *UT    
+    <<: *LB  
     use:
       - Germany
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true       
     
   - name: Korean
-    <<: *UT    
+    <<: *LB  
     use:
       - Korean
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true            
      
   - name: Australia 
-    <<: *UT    
+    <<: *LB  
     use:
       - Australia
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
     hidden: true            
     
   - name: Canada
-    <<: *UT    
+    <<: *LB  
     use:
       - Canada
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
@@ -481,7 +467,7 @@ proxies:
         Host: quiz.int.vidio.com.ikada.sing-box.id
     udp: true
   - name: 🏳️Memedv1
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vless
     uuid: a09705af-e22f-4e97-b5a1-fcee443aed80
@@ -512,7 +498,7 @@ proxies:
         Host: quiz.int.vidio.com.dtpz.denkaaravpn.my.id
     udp: true
   - name: 🏳️Septi4n
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vless
     uuid: fe576908-c622-4a8c-b6c6-da6e1ca73191
@@ -540,7 +526,7 @@ proxies:
         Host: vip-do.webkuy.my.id
     udp: true
   - name: 🏳️Septian1
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: trojan
     password: c902cb2b-7a32-42c7-86bf-0610aa909f5f
@@ -553,7 +539,7 @@ proxies:
         Host: lt.denkaaravpn.my.id
     udp: true
   - name: 🏳️trojan_WS_Septian_VVIP
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: trojan
     password: 16e519e14118a094
@@ -566,7 +552,7 @@ proxies:
         Host: quiz.int.vidio.com.atp.sing-box.id
     udp: true    
   - name: 🏳️Vino1
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: c2a96ffa-c1cd-4cfe-813b-fb8e17d64713
@@ -582,7 +568,7 @@ proxies:
         Host: msa.denkaaravpn.my.id
     udp: true    
   - name: 🏴Ilham3
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: 1689516a-2852-4404-aab8-ddb3728632ae
@@ -598,7 +584,7 @@ proxies:
         Host: do-iv.denkaaravpn.my.id
     udp: true
   - name: 🏴Yusnita2
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: 74f2f8e0-c620-4bda-ba62-15e61665e902
@@ -615,24 +601,8 @@ proxies:
     udp: true
     
     
-  - name: 🏴Riky11
-    server: quiz.int.vidio.com
-    port: 443
-    type: vmess
-    uuid: 8f11b3c5-faad-4243-9a26-296314a44978
-    alterId: 0
-    cipher: auto
-    tls: true
-    skip-cert-verify: true
-    servername: sgdo.rcvpn.net
-    network: ws
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: sgdo.rcvpn.net
-    udp: true
   - name: 🏴Ujang1
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: a42afa5a-d0af-4f0d-a36b-37a3400d4720
@@ -648,7 +618,7 @@ proxies:
         Host: sgdo.rcvpn.net
     udp: true
   - name: 🏴David1
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: be998bdf-e949-4678-ae31-00d4eeb36ec1
@@ -664,7 +634,7 @@ proxies:
         Host: sgdo.rcvpn.net
     udp: true
   - name: 🏴Izzul1
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: 8e343fb2-822b-4853-a9e5-f7ce4aa5a304
@@ -679,24 +649,9 @@ proxies:
       headers:
         Host: sgdo.rcvpn.net
     udp: true
-  - name: 🏴Ilham1Fajri
-    server: quiz.int.vidio.com
-    port: 443
-    type: vmess
-    uuid: 4876ed03-aa81-474a-9800-cd12442f303a
-    alterId: 0
-    cipher: auto
-    tls: true
-    skip-cert-verify: true
-    servername: sgdo.rcvpn.net
-    network: ws
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: sgdo.rcvpn.net
-    udp: true
+
   - name: 🏴Agus1
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: 9a7f26ec-7235-41b1-9363-f0dd9e7715ce
@@ -712,7 +667,7 @@ proxies:
         Host: sgdo.rcvpn.net
     udp: true
   - name: 🏴Deryy1
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: f9b2adf0-6717-4e18-90f4-d9e98efe5a0a
@@ -728,7 +683,7 @@ proxies:
         Host: sgdo.rcvpn.net
     udp: true
   - name: 🏴Ady1fotocopy
-    server: quiz.int.vidio.com
+    server: 104.17.156.243
     port: 443
     type: vmess
     uuid: fd3e69d0-db33-4ee9-ae82-545eada6d504
@@ -743,28 +698,202 @@ proxies:
       headers:
         Host: sgdo.rcvpn.net
     udp: true    
+    
+  - name: 🏴rambli1
+    server: 104.17.156.243
+    port: 443
+    type: vmess
+    uuid: 1ea0f601-5bc5-4b10-9a6e-7787b993db88
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: do-v3.bhm.my.id
+    network: ws
+    ws-opts:
+      path: vmess
+      headers:
+        Host: do-v3.bhm.my.id
+    udp: true
+    
+  - name: 🏴rifky1
+    server: 104.17.156.243
+    port: 443
+    type: vmess
+    uuid: af15b7bc-5e05-4b41-b282-4b52abb582a4
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: do-v3.bhm.my.id
+    network: ws
+    ws-opts:
+      path: vmess
+      headers:
+        Host: do-v3.bhm.my.id
+    udp: true   
 
+  - name: 🏳️iflix Memedv1
+    server: nusa.denkaaravpn.my.id
+    port: 443
+    type: vless
+    uuid: a09705af-e22f-4e97-b5a1-fcee443aed80
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: live.wetv.vip
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: live.wetv.vip
+    udp: true
+  - name: 🏴iflix Septian1
+    server: lt.denkaaravpn.my.id
+    port: 443
+    type: trojan
+    password: c902cb2b-7a32-42c7-86bf-0610aa909f5f
+    skip-cert-verify: true
+    sni: live.wetv.vip
+    network: ws
+    ws-opts:
+      path: /trojan
+      headers:
+        Host: live.wetv.vip
+    udp: true
+  - name: 🏳️iflix trojan_WS_Septian_VVIP
+    server: atp.sing-box.id
+    port: 443
+    type: trojan
+    password: 16e519e14118a094
+    skip-cert-verify: true
+    sni: live.wetv.vip
+    network: ws
+    ws-opts:
+      path: /buy-trojan-ws-pm-telegram-at-synricha
+      headers:
+        Host: live.wetv.vip
+    udp: true
+  - name: 🏳️iflix Septi4n
+    server: nusa.denkaaravpn.my.id
+    port: 443
+    type: vless
+    uuid: fe576908-c622-4a8c-b6c6-da6e1ca73191
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: live.wetv.vip
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: live.wetv.vip
+    udp: true
+    
+    
+    
+    
+  - name: 🎯Ujang1
+    server: sgdo.rcvpn.net
+    port: 443
+    type: vmess
+    uuid: a42afa5a-d0af-4f0d-a36b-37a3400d4720
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: access.wetv.vip
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🎯David1
+    server: sgdo.rcvpn.net
+    port: 443
+    type: vmess
+    uuid: be998bdf-e949-4678-ae31-00d4eeb36ec1
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: access.wetv.vip
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🎯Izzul1
+    server: sgdo.rcvpn.net
+    port: 443
+    type: vmess
+    uuid: 8e343fb2-822b-4853-a9e5-f7ce4aa5a304
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: access.wetv.vip
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🎯Agus1
+    server: sgdo.rcvpn.net
+    port: 443
+    type: vmess
+    uuid: 9a7f26ec-7235-41b1-9363-f0dd9e7715ce
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: access.wetv.vip
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🎯Deryy1
+    server: sgdo.rcvpn.net
+    port: 443
+    type: vmess
+    uuid: f9b2adf0-6717-4e18-90f4-d9e98efe5a0a
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: access.wetv.vip
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true
+  - name: 🎯Ady1fotocopy
+    server: sgdo.rcvpn.net
+    port: 443
+    type: vmess
+    uuid: fd3e69d0-db33-4ee9-ae82-545eada6d504
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: access.wetv.vip
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: sgdo.rcvpn.net
+    udp: true    
+    
 proxy-providers:
-  ⚡🌠 TROJAN ⚡🌠:
-    type: http
-    url: https://vltr.vpnoir8r.us.kg/yaml/?trojan=quiz.int.vidio.com
-    interval: 18000
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 120
-  ⚡🌠 VLESS ⚡🌠:
-    type: http
-    url: https://vltr.vpnoir8r.us.kg/yaml/?vless=quiz.int.vidio.com
-    interval: 18000
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 120
-
   Indonesian:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=id&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=id&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=id&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=id&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -773,7 +902,7 @@ proxy-providers:
       
   Singapore:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=sg&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=sg&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=sg&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=sg&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -782,7 +911,7 @@ proxy-providers:
       
   Japan:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=jp&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=jp&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=jp&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=jp&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -791,7 +920,7 @@ proxy-providers:
       
   United States:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=us&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=us&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=us&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=us&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -800,7 +929,7 @@ proxy-providers:
       
   Netherlands:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=nl&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=nl&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=nl&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=nl&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -809,7 +938,7 @@ proxy-providers:
       
   Malaysia:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=my&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=my&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=my&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=my&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -818,7 +947,7 @@ proxy-providers:
       
   Germany:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=de&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=de&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=de&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=de&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -827,7 +956,7 @@ proxy-providers:
       
   Korean:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=kr&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=kr&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=kr&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=kr&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -836,7 +965,7 @@ proxy-providers:
       
   Australia:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=au&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=au&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=au&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=au&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
@@ -845,7 +974,7 @@ proxy-providers:
       
   Canada:
     type: http
-    url: https://sub.ghosting.us.kg/vless/?country=ca&ws=quiz.int.vidio.com # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=ca&ws=aio.ghosting.us.kg
+    url: https://sub.ghosting.us.kg/vless/?country=ca&ws=104.17.156.243 # wildcard > https://sub.ghosting.us.kg/vless/wildcard?country=ca&ws=aio.ghosting.us.kg
     interval: 18000
     health-check:
       enable: true
